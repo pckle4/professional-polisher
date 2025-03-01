@@ -9,26 +9,26 @@ const ResumeHeader = () => {
   return (
     <header className="w-full py-4 px-6 bg-white shadow-sm border-b border-gray-100 flex justify-between items-center">
       <div className="flex items-center space-x-4">
-        <h1 className="text-2xl font-bold">ResumeBuilder</h1>
+        <Link to="/" className="text-2xl font-bold">ResumeBuilder</Link>
         <NavigationMenu>
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuTrigger>Templates</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <div className="grid grid-cols-2 gap-2 p-4 w-[400px]">
-                  <Link to="/" className="group block p-2 rounded hover:bg-gray-50">
+                  <Link to="/resume-builder" className="group block p-2 rounded hover:bg-gray-50">
                     <div className="font-medium">Modern</div>
                     <div className="text-sm text-gray-500">Clean and minimalist design</div>
                   </Link>
-                  <Link to="/" className="group block p-2 rounded hover:bg-gray-50">
+                  <Link to="/resume-builder" className="group block p-2 rounded hover:bg-gray-50">
                     <div className="font-medium">Classic</div>
                     <div className="text-sm text-gray-500">Traditional resume format</div>
                   </Link>
-                  <Link to="/" className="group block p-2 rounded hover:bg-gray-50">
+                  <Link to="/resume-builder" className="group block p-2 rounded hover:bg-gray-50">
                     <div className="font-medium">Creative</div>
                     <div className="text-sm text-gray-500">Stand out with unique design</div>
                   </Link>
-                  <Link to="/" className="group block p-2 rounded hover:bg-gray-50">
+                  <Link to="/resume-builder" className="group block p-2 rounded hover:bg-gray-50">
                     <div className="font-medium">Professional</div>
                     <div className="text-sm text-gray-500">Business-oriented style</div>
                   </Link>
@@ -52,7 +52,7 @@ const ResumeHeader = () => {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link to="/" className="block px-4 py-2 text-sm">
-                Examples
+                Home
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>

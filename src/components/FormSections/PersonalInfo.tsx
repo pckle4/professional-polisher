@@ -14,9 +14,16 @@ interface PersonalInfoProps {
     summary: string;
   };
   updateField: (field: string, value: string) => void;
+  errors?: {
+    fullName?: string;
+    email?: string;
+    phone?: string;
+    website?: string;
+    summary?: string;
+  };
 }
 
-const PersonalInfo: React.FC<PersonalInfoProps> = ({ formData, updateField }) => {
+const PersonalInfo: React.FC<PersonalInfoProps> = ({ formData, updateField, errors = {} }) => {
   return (
     <div className="space-y-6">
       <h2 className="text-xl font-semibold">Personal Information</h2>
@@ -34,9 +41,12 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ formData, updateField }) =>
             value={formData.fullName}
             onChange={(e) => updateField('fullName', e.target.value)}
             placeholder="John Doe"
-            className="mt-1"
+            className={`mt-1 ${errors.fullName ? 'border-red-500' : ''}`}
             required
           />
+          {errors.fullName && (
+            <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+          )}
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -50,9 +60,12 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ formData, updateField }) =>
               value={formData.email}
               onChange={(e) => updateField('email', e.target.value)}
               placeholder="johndoe@example.com"
-              className="mt-1"
+              className={`mt-1 ${errors.email ? 'border-red-500' : ''}`}
               required
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+            )}
           </div>
           
           <div>
@@ -64,8 +77,11 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ formData, updateField }) =>
               value={formData.phone}
               onChange={(e) => updateField('phone', e.target.value)}
               placeholder="(123) 456-7890"
-              className="mt-1"
+              className={`mt-1 ${errors.phone ? 'border-red-500' : ''}`}
             />
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+            )}
           </div>
         </div>
         
@@ -92,8 +108,11 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ formData, updateField }) =>
               value={formData.website}
               onChange={(e) => updateField('website', e.target.value)}
               placeholder="linkedin.com/in/johndoe"
-              className="mt-1"
+              className={`mt-1 ${errors.website ? 'border-red-500' : ''}`}
             />
+            {errors.website && (
+              <p className="text-red-500 text-sm mt-1">{errors.website}</p>
+            )}
           </div>
         </div>
         
@@ -106,9 +125,15 @@ const PersonalInfo: React.FC<PersonalInfoProps> = ({ formData, updateField }) =>
             value={formData.summary}
             onChange={(e) => updateField('summary', e.target.value)}
             placeholder="Briefly describe your professional background and key qualifications (2-3 sentences)"
-            className="mt-1 resize-none"
+            className={`mt-1 resize-none ${errors.summary ? 'border-red-500' : ''}`}
             rows={4}
           />
+          {errors.summary && (
+            <p className="text-red-500 text-sm mt-1">{errors.summary}</p>
+          )}
+          <p className="text-xs text-gray-500 mt-1">
+            {formData.summary.length}/500 characters
+          </p>
         </div>
       </div>
     </div>
